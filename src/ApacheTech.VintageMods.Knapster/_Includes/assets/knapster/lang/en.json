@@ -1,0 +1,14 @@
+{
+  "ModTitle": "Knapster",
+  "ModDescription": "Easier knapping, clayforming, and smithing, for those with low manual dexterity.",
+
+  "Features.Knapster.ServerCommandDescription": "Allows the server admin to change the settings for the mod on the server.",
+
+  "Features.EasyKnapping.Enabled": "Easy Knapping Enabled: {0}",
+
+  "Features.EasyClayForming.Enabled": "Easy Clay Forming Enabled: {0}",
+  "Features.EasyClayForming.Voxels": "Voxels Per Click: {0}",
+
+  "Features.EasySmithing.Enabled": "Easy Smithing Enabled: {0}",
+  "Features.EasySmithing.Cost": "Durability Cost Per Click: {0}"
+}

@@ -1,0 +1,14 @@
+{
+  "ModTitle": "Knapster",
+  "ModDescription": "Легкое отламывание, гончарное дело, кузнечное дело, для тех, у кого низкая ловкость рук.",
+
+  "Features.Knapster.ServerCommandDescription": "Позволяет администратору сервера изменять настройки мода на сервере.",
+
+  "Features.EasyKnapping.Enabled": "Включено легкое откалывание: {0}",
+
+  "Features.EasyClayForming.Enabled": "Включено легкое гончарное дело: {0}",
+  "Features.EasyClayForming.Voxels": "Воксели на клик: {0}",
+
+  "Features.EasySmithing.Enabled": "Легкое кузнечное дело включено: {0}",
+  "Features.EasySmithing.Cost": "Стоимость прочности за клик: {0}"
+}

@@ -1,0 +1,14 @@
+{
+  "ModTitle": "Knapster",
+  "ModDescription": "Leichteres Steinhauen, Tonformen, Schmieden, für diejenigen mit geringer manueller Geschicklichkeit.",
+
+  "Features.Knapster.ServerCommandDescription": "Erlaubt dem Server-Admin, die Einstellungen für den Mod auf dem Server zu ändern.",
+
+  "Features.EasyKnapping.Enabled": "Einfaches Steinhauen Aktiviert: {0}",
+
+  "Features.EasyClayForming.Enabled": "Einfaches Tonformen Aktiviert: {0}",
+  "Features.EasyClayForming.Voxels": "Voxel pro Klick: {0}",
+
+  "Features.EasySmithing.Enabled": "Einfaches Schmieden Aktiviert: {0}",
+  "Features.EasySmithing.Cost": "Dauerhaftigkeitskosten pro Klick: {0}"
+}

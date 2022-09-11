@@ -1,0 +1,14 @@
+{
+  "ModTitle": "Knapster",
+  "ModDescription": "Más fácil Talla lítica, alfarería, herrería, para los que tienen poca destreza manual.",
+
+  "Features.Knapster.ServerCommandDescription": "Permite al administrador del servidor cambiar la configuración del mod en el servidor.",
+
+  "Features.EasyKnapping.Enabled": "Tallado lítico fácil Activado: {0}",
+
+  "Features.EasyClayForming.Enabled": "Alfarería fácil Activado: {0}",
+  "Features.EasyClayForming.Voxels": "Voxels por clic: {0}",
+
+  "Features.EasySmithing.Enabled": "Herrería fácil Activado: {0}",
+  "Features.EasySmithing.Cost": "Coste de durabilidad por clic: {0}"
+}

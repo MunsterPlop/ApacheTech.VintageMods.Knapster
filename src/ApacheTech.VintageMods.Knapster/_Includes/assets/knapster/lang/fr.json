@@ -1,0 +1,14 @@
+{
+  "ModTitle": "Knapster",
+  "ModDescription": "Facilite la taille des pierres, le modelage de l'argile, le forgeage, pour ceux qui ont une faible dextérité manuelle.",
+
+  "Features.Knapster.ServerCommandDescription": "Permet à l'administrateur du serveur de modifier les paramètres du mod sur le serveur.",
+
+  "Features.EasyKnapping.Enabled": "Taillage facile activé : {0}",
+
+  "Features.EasyClayForming.Enabled": "Modelage facile de l'argile Activé : {0}",
+  "Features.EasyClayForming.Voxels": "Voxels par clic : {0}",
+
+  "Features.EasySmithing.Enabled": "Forgeage facile activé : {0}",
+  "Features.EasySmithing.Cost": "Coût de durabilité par clic : {0}"
+}
