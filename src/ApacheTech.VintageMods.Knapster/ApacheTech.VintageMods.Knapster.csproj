@@ -8,7 +8,7 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<OutputType>Library</OutputType>
-		<Configurations>Debug;Release;Package</Configurations>
+		<Configurations>Debug;Release;Package;Launch Server</Configurations>
 		<Version>0.1.0.0</Version>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<FileVersion>$(Version)</FileVersion>
@@ -35,13 +35,15 @@
 	<!-- BEGIN -->
 
   <ItemGroup>
+    <None Include="..\..\docs\LICENCE.md" Link="_Includes\LICENCE.md" />
+    <None Include="..\..\docs\README.md" Link="_Includes\README.md" />
     <None Include="ApacheTech.VintageMods.Knapster.saproj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ApacheTech.VintageMods.FluentChatCommands" Version="1.4.1" />
+		<PackageReference Include="ApacheTech.VintageMods.FluentChatCommands" Version="2.0.1" />
 		<PackageReference Include="IsExternalInit" Version="1.0.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -129,7 +131,7 @@
 	</Target>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="if $(Configuration) == Debug (&#xD;&#xA;&#xD;&#xA;:: Generator Mod Info file. ::&#xD;&#xA;cd &quot;$(ModInfoGeneratorDir)&quot;&#xD;&#xA;&quot;$(ModInfoGeneratorPath)&quot; -a &quot;$(TargetPath)&quot; -o $(TargetDir)&#xD;&#xA;&#xD;&#xA;:: Copy all other relevant files to target directory. ::&#xD;&#xA;xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir).debug\$(ProjectName)&quot; /y /e /s&#xD;&#xA;xcopy &quot;$(ProjectDir)_Includes\&quot; &quot;$(SolutionDir).debug\$(ProjectName)&quot; /y /e /s&#xD;&#xA;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Package (&#xD;&#xA;&#xD;&#xA;:: Copy all other relevant files to target directory. ::&#xD;&#xA;xcopy &quot;$(ProjectDir)_Includes\&quot; &quot;$(TargetDir)_Includes\&quot; /y /e /s&#xD;&#xA;&#xD;&#xA;:: Package the mod. ::&#xD;&#xA;cd &quot;$(ModPackagerDir)&quot;&#xD;&#xA;&quot;$(ModPackagerPath)&quot; -a &quot;$(TargetPath)&quot;&#xD;&#xA;&#xD;&#xA;:: Copy mod package to releases directory. ::&#xD;&#xA;copy /y &quot;$(TargetDir)release\*.zip&quot; &quot;$(SolutionDir).releases&quot;&#xD;&#xA;&#xD;&#xA;)" />
+	  <Exec Command="if &quot;$(Configuration)&quot; == &quot;Debug&quot; (&#xD;&#xA;&#xD;&#xA;:: Generator Mod Info file. ::&#xD;&#xA;cd &quot;$(ModInfoGeneratorDir)&quot;&#xD;&#xA;&quot;$(ModInfoGeneratorPath)&quot; -a &quot;$(TargetPath)&quot; -o $(TargetDir)&#xD;&#xA;&#xD;&#xA;:: Copy all other relevant files to target directory. ::&#xD;&#xA;xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir).debug\$(ProjectName)&quot; /y /e /s&#xD;&#xA;xcopy &quot;$(ProjectDir)_Includes\&quot; &quot;$(SolutionDir).debug\$(ProjectName)&quot; /y /e /s&#xD;&#xA;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if &quot;$(Configuration)&quot; == &quot;Package&quot; (&#xD;&#xA;&#xD;&#xA;:: Copy all other relevant files to target directory. ::&#xD;&#xA;xcopy &quot;$(ProjectDir)_Includes\&quot; &quot;$(TargetDir)_Includes\&quot; /y /e /s&#xD;&#xA;&#xD;&#xA;:: Package the mod. ::&#xD;&#xA;cd &quot;$(ModPackagerDir)&quot;&#xD;&#xA;&quot;$(ModPackagerPath)&quot; -a &quot;$(TargetPath)&quot;&#xD;&#xA;&#xD;&#xA;:: Copy mod package to releases directory. ::&#xD;&#xA;copy /y &quot;$(TargetDir)release\*.zip&quot; &quot;$(SolutionDir).releases&quot;&#xD;&#xA;&#xD;&#xA;)" />
 	</Target>
 
 </Project>

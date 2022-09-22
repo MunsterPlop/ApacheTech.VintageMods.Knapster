@@ -1,36 +1,57 @@
 ﻿using System;
-using System.Threading.Tasks;
 using ApacheTech.Common.Extensions.Harmony;
-using Gantry.Core;
+using JetBrains.Annotations;
+using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
-namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
+namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Extensions
 {
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public static class BlockEntityClayFormExtensions
     {
-        public static void AutoCompleteByVoxelPos(this BlockEntityClayForm block)
+        public static void AutoComplete(this BlockEntityClayForm block)
         {
-            Task.Factory.StartNew(() =>
-            {
-                for (var i = 0; i < 16; i++)
-                {
-                    for (var j = 0; j < 16; j++)
-                    {
-                        for (var k = 0; k < 16; k++)
-                        {
-                            var x = j;
-                            var y = i;
-                            var z = k;
+            block.Voxels = block.SelectedRecipe.Voxels;
+        }
 
-                            var expected = block.SelectedRecipe.Voxels[x, y, z];
-                            var actual = block.Voxels[x, y, z];
-                            if (expected == actual) continue;
-                            block.Voxels[x, y, z] = expected;
-                        }
+        public static void AutoComplete(this BlockEntityKnappingSurface block)
+        {
+            block.Voxels = block.SelectedRecipe.Voxels.ForSingleLayer(0);
+        }
+
+        public static void AutoComplete(this BlockEntityAnvil block)
+        {
+            block.Voxels = block.SelectedRecipe.Voxels.ToBytes();
+        }
+
+        public static byte[,,] ToBytes(this bool[,,] voxels)
+        {
+            var retVal = new byte[16,16,16];
+            for (var y = 0; y < 16; y++)
+            {
+                for (var x = 0; x < 16; x++)
+                {
+                    for (var z = 0; z < 16; z++)
+                    {
+                        retVal[x, y, z] = (byte)(voxels[x, y, z] ? 1 : 0);
                     }
                 }
-            });
+            }
+            return retVal;
+        }
+
+        public static bool[,] ForSingleLayer(this bool[,,] voxels, int y)
+        {
+            var retVal = new bool[,] {};
+            for (var x = 0; x < 16; x++)
+            {
+                for (var z = 0; z < 16; z++)
+                {
+                    retVal[x, z] = voxels[x, y, z];
+                }
+            }
+            return retVal;
         }
 
         public static int CurrentLayer(this BlockEntityClayForm block, int layerStart = 0)
@@ -58,7 +79,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
             var result = false;
             var num = Math.Max(1, voxels);
             for (var x = 0; x < 16; x++)
-            {   
+            {
                 for (var z = 0; z < 16; z++)
                 {
                     var expected = block.SelectedRecipe?.Voxels[x, y, z] ?? false;
@@ -67,7 +88,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
                     result = true;
                     block.Voxels[x, y, z] = expected;
                     block.AvailableVoxels--;
-                    if (--num == 0) return result;
+                    if (--num == 0) return true;
                 }
             }
             return result;
@@ -94,23 +115,39 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
             }
         }
 
-        public static void SimulateCorrectClick(this BlockEntityClayForm block, int selectionBoxIndex, bool mouseBreakMode)
-        {
-            var player = ApiEx.Client.World.Player;
 
+        public static void SimulateLeftClick(this IPlayer player, int selectionBoxIndex)
+        {
+            SimulateClick(player, selectionBoxIndex, false);
+        }
+
+
+        public static void SimulateRightClick(this IPlayer player, int selectionBoxIndex)
+        {
+            SimulateClick(player, selectionBoxIndex, true);
+        }
+
+
+        public static void SimulateClick(this IPlayer player, int selectionBoxIndex, bool mouseBreakMode)
+        {
             var blockSel = player.CurrentBlockSelection;
             if (blockSel is null) return;
             blockSel.SelectionBoxIndex = selectionBoxIndex;
             var slot = player.InventoryManager.ActiveHotbarSlot;
+            var handling = EnumHandHandling.NotHandled;
 
             if (mouseBreakMode)
             {
-                slot.Itemstack?.Item?.OnHeldAttackStop(0, slot, player.Entity, blockSel, player.CurrentEntitySelection);
+                slot.Itemstack?.Item?.OnHeldAttackStart(slot, player.Entity, blockSel, player.CurrentEntitySelection, ref handling);
                 return;
             }
-            slot.Itemstack?.Item?.OnHeldInteractStop(0, slot, player.Entity, blockSel, player.CurrentEntitySelection);
+            slot.Itemstack?.Item?.OnHeldInteractStart(slot, player.Entity, blockSel, player.CurrentEntitySelection, true, ref handling);
         }
 
+        /// <summary>
+        ///     Converts a specific cuboid to a specific voxel position, within a block.
+        /// </summary>
+        /// <param name="cuboid">The cuboid to convert.</param>
         public static Vec3i GetVoxelPos(this Cuboidf cuboid)
         {
             return new Vec3i((int)(16f * cuboid.X1), (int)(16f * cuboid.Y1), (int)(16f * cuboid.Z1));

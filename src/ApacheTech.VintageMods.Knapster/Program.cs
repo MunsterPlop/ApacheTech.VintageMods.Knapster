@@ -1,6 +1,7 @@
 ﻿using ApacheTech.Common.DependencyInjection.Abstractions;
 using ApacheTech.Common.DependencyInjection.Abstractions.Extensions;
 using ApacheTech.VintageMods.FluentChatCommands;
+using ApacheTech.VintageMods.FluentChatCommands.Extensions;
 using Gantry.Core;
 using Gantry.Core.DependencyInjection;
 using Gantry.Services.FileSystem.Abstractions.Contracts;
@@ -50,20 +51,14 @@ namespace ApacheTech.VintageMods.Knapster
             IOC.Services.Resolve<IFileSystemService>()
                 .RegisterSettingsFile("settings-world-server.json", FileScope.World);
 
-            FluentChat.ServerCommand("knapster")
+            api.RegisterFluentCommand("knapster")!
                 .RequiresPrivilege(Privilege.controlserver)
-                .RegisterWith(api)
-                .HasDescription(LangEx.FeatureString("Knapster", "ServerCommandDescription"));
+                .WithDescription(LangEx.FeatureString("Knapster", "ServerCommandDescription"));
         }
 
         /// <summary>
         ///     If this mod allows runtime reloading, you must implement this method to unregister any listeners / handlers
         /// </summary>
-        public override void Dispose()
-        {
-            ApiEx.Run(
-                FluentChat.DisposeClientCommands, 
-                FluentChat.DisposeServerCommands);
-        }
+        public override void Dispose() => FluentChat.ClearCommands(ApiEx.Current);
     }
 }

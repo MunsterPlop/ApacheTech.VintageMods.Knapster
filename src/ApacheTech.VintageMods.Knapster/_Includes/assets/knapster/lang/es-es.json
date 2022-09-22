@@ -4,11 +4,24 @@
 
   "Features.Knapster.ServerCommandDescription": "Permite al administrador del servidor cambiar la configuración del mod en el servidor.",
 
-  "Features.EasyKnapping.Enabled": "Tallado lítico fácil Activado: {0}",
+  "Features.Knapster.Mode": "{0} Modo: {1}",
+  "Features.Knapster.SetMode": "{0} modo ahora se ajusta a: {1}",
+  "Features.Knapster.InvalidMode": "Modo de acceso inválido. Las opciones válidas son: {0}",
+  "Features.Knapster.AutoComplete": "Autocompletar",
 
-  "Features.EasyClayForming.Enabled": "Alfarería fácil Activado: {0}",
+  "Features.Knapster.PlayerSearch.NoResults": "La búsqueda de '{0}' no ha dado resultados. Por favor, inténtelo de nuevo.",
+  "Features.Knapster.PlayerSearch.MultipleResults": "La búsqueda de '{0}', ha dado múltiples resultados. Por favor, afina tus términos de búsqueda.",
+
+  "Features.Knapster.Whitelist.Results": "Los siguientes jugadores están actualmente en la lista blanca de {0}:",
+  "Features.Knapster.Whitelist.NoResults": "Actualmente no hay jugadores en la lista blanca de {0}.",
+  "Features.Knapster.Whitelist.PlayerRemoved": "{0} ha sido eliminado de la lista blanca {1}.",
+  "Features.Knapster.Whitelist.PlayerAdded": "{0} ha sido añadido a la lista blanca {1}.",
+
+  "Features.Knapster.Blacklist.Results": "Los siguientes jugadores están actualmente en la lista negra de {0}:",
+  "Features.Knapster.Blacklist.NoResults": "Actualmente no hay jugadores en la lista negra de {0}.",
+  "Features.Knapster.Blacklist.PlayerRemoved": "{0} ha sido eliminado de la lista negra de {1}.",
+  "Features.Knapster.Blacklist.PlayerAdded": "{0} ha sido añadido a la lista negra de {1}.",
+
   "Features.EasyClayForming.Voxels": "Voxels por clic: {0}",
-
-  "Features.EasySmithing.Enabled": "Herrería fácil Activado: {0}",
   "Features.EasySmithing.Cost": "Coste de durabilidad por clic: {0}"
 }

@@ -1,5 +1,9 @@
-﻿using Gantry.Services.FileSystem.Features;
+﻿
+using Gantry.Services.FileSystem.Features;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using ApacheTech.VintageMods.Knapster.Abstractions;
+using ApacheTech.VintageMods.Knapster.DataStructures;
 
 namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
 {
@@ -8,28 +12,26 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
     /// </summary>
     /// <seealso cref="FeatureSettings" />
     [JsonObject]
-    public class EasyClayFormingSettings : FeatureSettings
+    public class EasyClayFormingSettings : FeatureSettings, IEasyFeatureSettings
     {
         /// <summary>
         ///     Determines whether the EasyClayForming Feature should be used.
         /// </summary>
-        public bool Enabled { get; set; } = true;
+        public AccessMode Mode { get; set; } = AccessMode.Enabled;
+
+        /// <summary>
+        ///     When the mode is set to `Whitelist`, only the players on this list will have the feature enabled.
+        /// </summary>
+        public List<Player> Whitelist { get; set; } = new();
+
+        /// <summary>
+        ///     When the mode is set to `Blacklist`, the players on this list will have the feature disabled.
+        /// </summary>
+        public List<Player> Blacklist { get; set; } = new();
 
         /// <summary>
         ///     Determines the number of voxels that are handled at one time, when using the Easy Clay Forming feature.
         /// </summary>
         public int VoxelsPerClick { get; set; } = 1;
-
-        /// <summary>
-        ///     Initialises a new instance of the <see cref="EasyClayFormingPacket"/> class.
-        /// </summary>
-        public static EasyClayFormingPacket FromSettings(EasyClayFormingSettings settings)
-        {
-            return new EasyClayFormingPacket
-            {
-                Enabled = settings.Enabled,
-                VoxelsPerClick = settings.VoxelsPerClick
-            };
-        }
     }
 }
