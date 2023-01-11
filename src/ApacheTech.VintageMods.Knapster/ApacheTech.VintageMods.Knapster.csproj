@@ -16,14 +16,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<ModPackagerDir>C:\Users\Apache\source\repos\ModPackager\ModPackager\bin\Release\net6.0\publish\win-x64\</ModPackagerDir>
+		<ModPackagerDir>C:\Users\Apache\source\repos\.tools\packager\</ModPackagerDir>
 		<ModPackagerName>ModPackager.exe</ModPackagerName>
 		<ModPackagerPath>$(ModPackagerDir)$(ModPackagerName)</ModPackagerPath>
 
 		<ModInfoGeneratorDir>C:\Users\Apache\source\repos\.tools\mig\</ModInfoGeneratorDir>
 		<ModInfoGeneratorName>mig.exe</ModInfoGeneratorName>
 		<ModInfoGeneratorPath>$(ModInfoGeneratorDir)$(ModInfoGeneratorName)</ModInfoGeneratorPath>
-		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Package|AnyCPU'">
