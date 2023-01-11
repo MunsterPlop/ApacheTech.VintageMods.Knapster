@@ -1,12 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
-using Gantry.Core;
-using Gantry.Services.HarmonyPatches.Annotations;
-using HarmonyLib;
-using JetBrains.Annotations;
-using Vintagestory.API.Common;
-using Vintagestory.API.MathTools;
-using Vintagestory.GameContent;
+﻿using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
 
 // ReSharper disable InconsistentNaming
 

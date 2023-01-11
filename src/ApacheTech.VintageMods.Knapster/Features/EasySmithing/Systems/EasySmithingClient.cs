@@ -1,11 +1,4 @@
-﻿using ApacheTech.Common.DependencyInjection.Abstractions.Extensions;
-using Gantry.Core.DependencyInjection;
-using Gantry.Core.ModSystems;
-using Gantry.Services.Network;
-using JetBrains.Annotations;
-using Vintagestory.API.Client;
-
-namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems
+﻿namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class EasySmithingClient : ClientModSystem

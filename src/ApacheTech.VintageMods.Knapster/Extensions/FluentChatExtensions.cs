@@ -1,7 +1,4 @@
-﻿using System;
-using ApacheTech.VintageMods.FluentChatCommands;
-
-namespace ApacheTech.VintageMods.Knapster.Extensions
+﻿namespace ApacheTech.VintageMods.Knapster.Extensions
 {
     /// <summary>
     ///     Extension methods to aid building sub-commands for EasyX features.

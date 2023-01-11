@@ -1,11 +1,6 @@
-﻿using ApacheTech.Common.DependencyInjection.Abstractions.Extensions;
-using Gantry.Core.DependencyInjection;
-using Gantry.Core.ModSystems;
-using Gantry.Services.Network;
-using Vintagestory.API.Client;
-
-namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Systems
+﻿namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Systems
 {
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public sealed class EasyKnappingClient : ClientModSystem
     {
         internal static EasyKnappingPacket Settings = new() { Enabled = false };

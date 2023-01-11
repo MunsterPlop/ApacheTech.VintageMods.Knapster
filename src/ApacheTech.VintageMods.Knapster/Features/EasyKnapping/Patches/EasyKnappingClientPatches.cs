@@ -1,14 +1,11 @@
 ﻿using ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Systems;
-using Gantry.Core.ModSystems;
-using Gantry.Services.HarmonyPatches.Annotations;
-using HarmonyLib;
-using Vintagestory.API.Common;
-using Vintagestory.API.MathTools;
-using Vintagestory.GameContent;
+
+// ReSharper disable InconsistentNaming
 
 namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Patches
 {
     [HarmonySidedPatch(EnumAppSide.Client)]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public sealed class EasyKnappingClientPatches : ClientModSystem
     {
         [HarmonyPrefix]

@@ -1,11 +1,5 @@
-﻿using System.Text;
-using ApacheTech.VintageMods.FluentChatCommands;
-using ApacheTech.VintageMods.Knapster.Abstractions;
+﻿using ApacheTech.VintageMods.Knapster.Abstractions;
 using ApacheTech.VintageMods.Knapster.Extensions;
-using Gantry.Core;
-using JetBrains.Annotations;
-using Vintagestory.API.Common;
-using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems
 {

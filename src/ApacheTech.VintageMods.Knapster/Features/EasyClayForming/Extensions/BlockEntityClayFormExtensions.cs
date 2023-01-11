@@ -1,11 +1,4 @@
-﻿using System;
-using ApacheTech.Common.Extensions.Harmony;
-using JetBrains.Annotations;
-using Vintagestory.API.Common;
-using Vintagestory.API.MathTools;
-using Vintagestory.GameContent;
-
-namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Extensions
+﻿namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Extensions
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public static class BlockEntityClayFormExtensions

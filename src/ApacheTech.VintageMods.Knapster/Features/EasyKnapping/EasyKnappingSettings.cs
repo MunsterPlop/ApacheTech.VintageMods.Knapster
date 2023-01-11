@@ -1,9 +1,7 @@
-﻿using Gantry.Services.FileSystem.Features;
-using Newtonsoft.Json;
-using ProtoBuf;
-using System.Collections.Generic;
+﻿using ProtoBuf;
 using ApacheTech.VintageMods.Knapster.Abstractions;
 using ApacheTech.VintageMods.Knapster.DataStructures;
+using Gantry.Services.FileSystem.Configuration.Abstractions;
 
 namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping
 {

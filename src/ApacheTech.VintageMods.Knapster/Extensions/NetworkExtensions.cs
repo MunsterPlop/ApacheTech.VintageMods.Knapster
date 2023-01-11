@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
-using Gantry.Core;
-using Vintagestory.API.Common;
+﻿using System.Text.RegularExpressions;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.Knapster.Extensions

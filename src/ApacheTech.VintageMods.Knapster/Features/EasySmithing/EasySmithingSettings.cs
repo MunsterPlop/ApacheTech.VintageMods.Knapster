@@ -1,8 +1,6 @@
-﻿using Gantry.Services.FileSystem.Features;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using ApacheTech.VintageMods.Knapster.Abstractions;
+﻿using ApacheTech.VintageMods.Knapster.Abstractions;
 using ApacheTech.VintageMods.Knapster.DataStructures;
+using Gantry.Services.FileSystem.Configuration.Abstractions;
 
 namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing
 {

@@ -1,27 +1,29 @@
-﻿using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
+﻿using ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Systems;
 
-namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
+// ReSharper disable InconsistentNaming
+
+namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Patches
 {
     [HarmonySidedPatch(EnumAppSide.Client)]
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    public class EasySmithingClientPatches
+    public class EasyClayFormingClientPatches
     {
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(ItemHammer), nameof(ItemHammer.GetToolModes))]
-        public static void ClientPatch_ItemHammer_GetToolModes_Postfix(ItemHammer __instance, ItemSlot slot,
+        [HarmonyPatch(typeof(ItemClay), nameof(ItemClay.GetToolModes))]
+        public static void ClientPatch_ItemClay_GetToolModes_Postfix(ItemClay __instance, ItemSlot slot,
             IClientPlayer forPlayer, BlockSelection blockSel, ref SkillItem[] __result, ref SkillItem[] ___toolModes)
         {
             if (__result is null) return;
-            if (!EasySmithingClient.Settings.Enabled)
+            if (!EasyClayFormingClient.Settings.Enabled)
             {
-                __result = ___toolModes = ___toolModes.Take(6).ToArray();
-                if (__instance.GetToolMode(slot, forPlayer, blockSel) < 6) return;
+                __result = ___toolModes = ___toolModes.Take(4).ToArray();
+                if (__instance.GetToolMode(slot, forPlayer, blockSel) < 4) return;
                 __instance.SetToolMode(slot, forPlayer, blockSel, 0);
                 return;
             }
 
             if (!ModEx.IsCurrentlyOnMainThread()) return;
-            if (___toolModes.Length > 6) return;
+            if (___toolModes.Length > 4) return;
             var skillItem = new SkillItem
             {
                 Code = new AssetLocation("auto"),

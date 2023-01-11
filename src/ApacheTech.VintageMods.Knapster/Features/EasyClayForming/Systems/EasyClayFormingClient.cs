@@ -1,11 +1,4 @@
-﻿using ApacheTech.Common.DependencyInjection.Abstractions.Extensions;
-using Gantry.Core.DependencyInjection;
-using Gantry.Core.ModSystems;
-using Gantry.Services.Network;
-using JetBrains.Annotations;
-using Vintagestory.API.Client;
-
-namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Systems
+﻿namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Systems
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class EasyClayFormingClient : ClientModSystem

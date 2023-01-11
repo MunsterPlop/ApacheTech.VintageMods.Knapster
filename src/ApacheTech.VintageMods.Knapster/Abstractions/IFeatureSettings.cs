@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ApacheTech.VintageMods.Knapster.DataStructures;
+﻿using ApacheTech.VintageMods.Knapster.DataStructures;
 
 namespace ApacheTech.VintageMods.Knapster.Abstractions
 {
