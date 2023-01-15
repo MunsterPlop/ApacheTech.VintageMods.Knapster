@@ -21,7 +21,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Systems
         {
             var sb = new StringBuilder();
             sb.AppendLine(LangEx.FeatureString("Knapster", "Mode", SubCommandName, Settings.Mode));
-            sb.Append(LangEx.FeatureString("EasyClayForming", "VoxelsPerClick", Settings.VoxelsPerClick));
+            sb.Append(LangEx.FeatureString("Knapster", "VoxelsPerClick", SubCommandName, Settings.VoxelsPerClick));
             Sapi.SendMessage(player, groupId, sb.ToString(), EnumChatType.Notification);
         }
 
@@ -33,7 +33,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming.Systems
         private void OnChangeVoxelsPerClick(IPlayer player, int groupId, CmdArgs args)
         {
             Settings.VoxelsPerClick = GameMath.Clamp(args.PopInt().GetValueOrDefault(1), 1, 8);
-            var message = LangEx.FeatureString("EasyClayForming", "VoxelsPerClick", Settings.VoxelsPerClick);
+            var message = LangEx.FeatureString("Knapster", "VoxelsPerClick", SubCommandName, Settings.VoxelsPerClick);
             Sapi.SendMessage(player, groupId, message, EnumChatType.Notification);
             ServerChannel?.BroadcastUniquePacket(GeneratePacket);
         }

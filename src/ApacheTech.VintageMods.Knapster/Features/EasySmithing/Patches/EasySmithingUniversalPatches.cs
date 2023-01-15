@@ -1,4 +1,5 @@
-﻿using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
+﻿using System.Threading;
+using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
 
 // ReSharper disable InconsistentNaming
 
@@ -19,8 +20,12 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
                 _ => EasySmithingClient.Settings.CostPerClick,
                 _ => EasySmithingServer.Settings.CostPerClick);
 
+            var voxelsPerClick = ApiEx.Return(
+                _ => EasySmithingClient.Settings.VoxelsPerClick,
+                _ => EasySmithingServer.Settings.VoxelsPerClick);
+
             var enabled = ApiEx.Return(
-                _ => EasySmithingClient.Settings.Enabled, 
+                _ => EasySmithingClient.Settings.Enabled,
                 _ => EasySmithingServer.IsEnabledFor(byPlayer));
 
             var slot = byPlayer.InventoryManager.ActiveHotbarSlot;
@@ -36,11 +41,16 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
 
             if (toolMode < 6) return true;
 
+            // ----
+
             if (__instance.Api.Side.IsClient())
             {
                 __instance.CallMethod("SendUseOverPacket", byPlayer, voxelPos);
             }
-            OnHit(__instance);
+            for (var i = 0; i < voxelsPerClick; i++)
+            {
+                OnHit(__instance);
+            }
             __instance.CallMethod("RegenMeshAndSelectionBoxes");
             __instance.Api.World.BlockAccessor.MarkBlockDirty(__instance.Pos);
             __instance.Api.World.BlockAccessor.MarkBlockEntityDirty(__instance.Pos);
@@ -50,7 +60,6 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
                 __instance.CallMethod("clearWorkSpace");
                 return false;
             }
-
             __instance.CheckIfFinished(byPlayer);
             __instance.MarkDirty();
 
@@ -60,6 +69,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
         private static void OnHit(BlockEntityAnvil anvil)
         {
             var recipe = anvil.SelectedRecipe;
+            if (recipe is null) return;
             var yMax = recipe.QuantityLayers;
             var usableMetalVoxel = anvil.CallMethod<Vec3i>("findFreeMetalVoxel");
             for (var x = 0; x < 16; x++)

@@ -27,5 +27,10 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping
         ///     When the mode is set to `Blacklist`, the players on this list will have the feature disabled.
         /// </summary>
         public List<Player> Blacklist { get; set; } = new();
+
+        /// <summary>
+        ///     Determines the number of voxels that are handled at one time, when using the Easy Knapping feature.
+        /// </summary>
+        public int VoxelsPerClick { get; set; } = 1;
     }
 }

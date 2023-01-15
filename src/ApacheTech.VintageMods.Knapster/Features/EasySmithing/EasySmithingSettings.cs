@@ -30,5 +30,10 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing
         ///     Determines the amount of durability that is lost at one time, when using the Easy Smithing feature.
         /// </summary>
         public int CostPerClick { get; set; } = 5;
+
+        /// <summary>
+        ///     Determines the number of voxels that are handled at one time, when using the Easy Smithing feature.
+        /// </summary>
+        public int VoxelsPerClick { get; set; } = 1;
     }
 }

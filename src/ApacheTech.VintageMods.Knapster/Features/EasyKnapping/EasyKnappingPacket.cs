@@ -6,8 +6,25 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping
     public class EasyKnappingPacket
     {
         /// <summary>
-        ///     Determines whether the EasyClayForming Feature should be used.
+        ///     Determines whether the EasyKnapping feature should be used.
         /// </summary>
         public bool Enabled { get; init; }
+
+        /// <summary>
+        ///     Determines the number of voxels that are handled at one time, when using the EasyKnapping feature.
+        /// </summary>
+        public int VoxelsPerClick { get; init; }
+
+        /// <summary>
+        ///     Initialises a new instance of the <see cref="EasyKnappingPacket"/> class.
+        /// </summary>
+        public static EasyKnappingPacket Create(bool enabled, int voxelsPerClick)
+        {
+            return new EasyKnappingPacket
+            {
+                Enabled = enabled,
+                VoxelsPerClick = voxelsPerClick
+            };
+        }
     }
 }

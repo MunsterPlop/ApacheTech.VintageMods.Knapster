@@ -9,8 +9,27 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Patches
     public sealed class EasyKnappingClientPatches : ClientModSystem
     {
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(BlockEntityKnappingSurface), nameof(BlockEntityClayForm.OnUseOver), typeof(IPlayer), typeof(Vec3i), typeof(BlockFacing), typeof(bool))]
+        [HarmonyPatch(typeof(BlockEntityKnappingSurface), "OnUseOver", typeof(IPlayer), typeof(int), typeof(BlockFacing), typeof(bool))]
         public static bool ClientPatch_BlockEntityKnappingSurface_OnUseOver_Prefix(
+            BlockEntityKnappingSurface __instance, IPlayer byPlayer, BlockFacing facing, bool mouseMode)
+        {
+            if (!EasyKnappingClient.Settings.Enabled) return true;
+            for (var i = 0; i < EasyKnappingClient.Settings.VoxelsPerClick; i++)
+            {
+                if (!__instance.CallMethod<bool>("HasAnyVoxel")) return true;
+                var voxelPos = FindNextVoxelToRemove(__instance);
+
+                var method = AccessTools.Method(typeof(BlockEntityKnappingSurface), "OnUseOver",
+                    new[] { typeof(IPlayer), typeof(Vec3i), typeof(BlockFacing), typeof(bool) });
+
+                method.Invoke(__instance, new object[] { byPlayer, voxelPos, facing, mouseMode });
+            }
+            return false;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(BlockEntityKnappingSurface), "OnUseOver", typeof(IPlayer), typeof(Vec3i), typeof(BlockFacing), typeof(bool))]
+        public static bool ClientPatch_BlockEntityKnappingSurface_OnUseOverVec3i_Prefix(
             BlockEntityKnappingSurface __instance, ref Vec3i voxelPos)
         {
             if (!EasyKnappingClient.Settings.Enabled) return true;

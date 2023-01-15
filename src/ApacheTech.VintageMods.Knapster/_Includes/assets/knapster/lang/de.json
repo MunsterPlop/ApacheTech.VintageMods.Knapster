@@ -22,6 +22,6 @@
   "Features.Knapster.Blacklist.PlayerRemoved": "{0} wurde von der schwarzen Liste {1} entfernt.",
   "Features.Knapster.Blacklist.PlayerAdded": "{0} wurde zur {1} schwarzen Liste hinzugefügt.",
 
-  "Features.EasyClayForming.Voxels": "Voxel pro Klick: {0}",
-  "Features.EasySmithing.Cost": "Dauerhaftigkeitskosten pro Klick: {0}"
+  "Features.Knapster.VoxelsPerClick": "{0} Voxel pro Klick: {1}",
+  "Features.EasySmithing.Cost": "{0} Dauerhaftigkeitskosten pro Klick: {1}"
 }
