@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
+﻿using ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems;
 
 // ReSharper disable InconsistentNaming
 
@@ -68,9 +67,8 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
 
         private static void OnHit(BlockEntityAnvil anvil)
         {
-            var recipe = anvil.SelectedRecipe;
-            if (recipe is null) return;
-            var yMax = recipe.QuantityLayers;
+            if (anvil.SelectedRecipe is null) return;
+            var yMax = anvil.SelectedRecipe.QuantityLayers;
             var usableMetalVoxel = anvil.CallMethod<Vec3i>("findFreeMetalVoxel");
             for (var x = 0; x < 16; x++)
             {
@@ -78,7 +76,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Patches
                 {
                     for (var y = 0; y < 6; y++)
                     {
-                        var requireMetalHere = y < yMax && recipe.Voxels[x, y, z];
+                        var requireMetalHere = y < yMax && anvil.recipeVoxels[x, y, z];
                         var mat = (EnumVoxelMaterial)anvil.Voxels[x, y, z];
                         if (mat == EnumVoxelMaterial.Slag)
                         {
