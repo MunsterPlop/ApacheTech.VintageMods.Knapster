@@ -6,6 +6,7 @@
         internal static EasySmithingPacket Settings = new()
         {
             Enabled = false,
+            VoxelsPerClick = 1,
             CostPerClick = 5
         };
 

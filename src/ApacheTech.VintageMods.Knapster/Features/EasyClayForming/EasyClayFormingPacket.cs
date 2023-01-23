@@ -8,12 +8,12 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyClayForming
         /// <summary>
         ///     Determines whether the EasyClayForming Feature should be used.
         /// </summary>
-        public bool Enabled { get; init; }
+        public required bool Enabled { get; init; }
 
         /// <summary>
         ///     Determines the number of voxels that are handled at one time, when using the Easy Clay Forming feature.
         /// </summary>
-        public int VoxelsPerClick { get; init; }
+        public required int VoxelsPerClick { get; init; }
 
         /// <summary>
         ///     Initialises a new instance of the <see cref="EasyClayFormingPacket"/> class.

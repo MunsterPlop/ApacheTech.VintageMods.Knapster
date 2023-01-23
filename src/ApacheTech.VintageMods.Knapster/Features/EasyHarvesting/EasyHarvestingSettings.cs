@@ -1,18 +1,20 @@
 ﻿using ApacheTech.VintageMods.Knapster.Abstractions;
 using ApacheTech.VintageMods.Knapster.DataStructures;
 using Gantry.Services.FileSystem.Configuration.Abstractions;
+using ProtoBuf;
 
-namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing
+namespace ApacheTech.VintageMods.Knapster.Features.EasyHarvesting
 {
     /// <summary>
     ///     Represents user-controllable settings used for the mod.
     /// </summary>
     /// <seealso cref="FeatureSettings" />
     [JsonObject]
-    public class EasySmithingSettings : FeatureSettings, IEasyFeatureSettings
+    [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+    public class EasyHarvestingSettings : FeatureSettings, IEasyFeatureSettings
     {
         /// <summary>
-        ///     Determines whether the EasyClayForming Feature should be used.
+        ///     Determines whether the EasyHarvesting Feature should be used.
         /// </summary>
         public AccessMode Mode { get; set; } = AccessMode.Enabled;
 
@@ -27,13 +29,8 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing
         public List<Player> Blacklist { get; set; } = new();
 
         /// <summary>
-        ///     Determines the amount of durability that is lost at one time, when using the Easy Smithing feature.
+        ///     Determines the multiplier to apply to the speed of harvesting with a scythe, when using the EasyHarvesting feature.
         /// </summary>
-        public int CostPerClick { get; set; } = 1;
-
-        /// <summary>
-        ///     Determines the number of voxels that are handled at one time, when using the Easy Smithing feature.
-        /// </summary>
-        public int VoxelsPerClick { get; set; } = 1;
+        public float SpeedMultiplier { get; set; } = 1f;
     }
 }

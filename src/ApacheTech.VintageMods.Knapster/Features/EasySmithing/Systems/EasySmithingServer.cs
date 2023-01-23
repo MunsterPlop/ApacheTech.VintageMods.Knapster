@@ -32,12 +32,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasySmithing.Systems
 
         protected override EasySmithingPacket GeneratePacketPerPlayer(IPlayer player, bool enabledForPlayer)
         {
-            return new EasySmithingPacket
-            {
-                Enabled = enabledForPlayer, 
-                CostPerClick = Settings.CostPerClick,
-                VoxelsPerClick = Settings.VoxelsPerClick
-            };
+            return EasySmithingPacket.Create(enabledForPlayer, Settings.CostPerClick, Settings.VoxelsPerClick);
         }
 
         private void OnChangeCostPerClick(IPlayer player, int groupId, CmdArgs args)

@@ -8,12 +8,12 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping
         /// <summary>
         ///     Determines whether the EasyKnapping feature should be used.
         /// </summary>
-        public bool Enabled { get; init; }
+        public required bool Enabled { get; init; }
 
         /// <summary>
         ///     Determines the number of voxels that are handled at one time, when using the EasyKnapping feature.
         /// </summary>
-        public int VoxelsPerClick { get; init; }
+        public required int VoxelsPerClick { get; init; }
 
         /// <summary>
         ///     Initialises a new instance of the <see cref="EasyKnappingPacket"/> class.

@@ -11,6 +11,16 @@
 
         public override void StartClientSide(ICoreClientAPI api)
         {
+            //api.RegisterCollectibleBehaviorClass(nameof(EasyKnappingBehaviour), typeof(EasyKnappingBehaviour));
+            //api.ApplyJsonPatch(new JsonPatch
+            //{
+            //    Op = EnumJsonPatchOp.Add,
+            //    Side = EnumAppSide.Client,
+            //    File = AssetLocation.Create("/itemtypes/resource/flint"),
+            //    Path = "/behaviors",
+            //    Value = JsonObject.FromJson(@"[{ name: ""EasyKnappingBehaviour"" }]")
+            //});
+
             IOC.Services.Resolve<IClientNetworkService>()
                 .DefaultClientChannel
                 .RegisterMessageType<EasyKnappingPacket>()

@@ -23,5 +23,9 @@
   "Features.Knapster.Blacklist.PlayerAdded": "{0} wurde zur {1} schwarzen Liste hinzugefügt.",
 
   "Features.Knapster.VoxelsPerClick": "{0} Voxel pro Klick: {1}",
+  {
+    "Features.Knapster.SpeedMultiplier": "{0} Geschwindigkeitsmultiplikator: {1}x",
+    "Features.Knapster.SättigungsMultiplikator": "{0} Sättigungsmultiplikator: {1}x"
+  }
   "Features.EasySmithing.Cost": "{0} Dauerhaftigkeitskosten pro Klick: {1}"
 }

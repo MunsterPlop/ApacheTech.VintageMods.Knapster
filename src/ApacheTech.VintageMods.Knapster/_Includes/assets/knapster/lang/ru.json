@@ -23,5 +23,7 @@
   "Features.Knapster.Blacklist.PlayerAdded": "{0} был добавлен в черный список {1}.",
 
   "Features.Knapster.VoxelsPerClick": "{0} Воксели на клик: {1}",
+  "Features.Knapster.SpeedMultiplier": "{0} Множитель скорости: {1}x",
+  "Features.Knapster.SaturationMultiplier": "{0} Множитель насыщенности: {1}x",
   "Features.EasySmithing.Cost": "{0} Стоимость прочности за клик: {1}"
 }

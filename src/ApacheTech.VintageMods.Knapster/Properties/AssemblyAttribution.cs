@@ -8,7 +8,7 @@
     "knapster",
     Description = "Easier knapping, clayforming, and smithing, for those with low manual dexterity.",
     Side = "Universal",
-    Version = "2.2.1",
+    Version = "2.3.0",
     NetworkVersion = "1.0.0",
     Website = "https://apachegaming.net",
     Contributors = new[] { "Apache" },
