@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Systems;
+﻿using ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Systems;
 
 // ReSharper disable InconsistentNaming
 
@@ -23,8 +22,6 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyKnapping.Patches
 
                 var method = AccessTools.Method(typeof(BlockEntityKnappingSurface), "OnUseOver",
                     new[] { typeof(IPlayer), typeof(Vec3i), typeof(BlockFacing), typeof(bool) });
-
-                Thread.Sleep(50);
 
                 method.Invoke(__instance, new object[] { byPlayer, voxelPos, facing, mouseMode });
             }

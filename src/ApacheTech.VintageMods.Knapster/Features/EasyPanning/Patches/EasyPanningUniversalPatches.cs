@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Emit;
 using ApacheTech.VintageMods.Knapster.Features.EasyPanning.Systems;
+using Vintagestory.API.Common.Entities;
 
 // ReSharper disable InconsistentNaming
 
@@ -50,11 +51,7 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyPanning.Patches
             {
                 var current = codeInstructions[i];
                 var next = codeInstructions[i+1];
-
-                if (current.opcode == OpCodes.Brfalse)
-                {
-                    var operand = current.operand;
-                }
+                
                 result.Add(current);
 
                 if (!(current.Is(OpCodes.Ldc_R4, 4f) && next.opcode == OpCodes.Cgt_Un)) continue;
@@ -65,6 +62,12 @@ namespace ApacheTech.VintageMods.Knapster.Features.EasyPanning.Patches
 
             result.Add(codeInstructions.Last());
             return result;
+        }
+
+        private void F(Entity entity)
+        {
+            if (entity is EntityPlayer player && 
+                player.Player.WorldData.CurrentGameMode is EnumGameMode.Spectator) return;
         }
 
         private static float SpeedMultiplier(EntityAgent byEntity)
